@@ -11,3 +11,65 @@ generator client {
 datasource db {
   provider = "sqlite"
 }
+
+model User {
+  id        Int       @id @default(autoincrement())
+  login     String
+  email     String    @unique
+  password  String
+  expenses  Expense[]
+  incomes   Income[]
+  savingGoals SavingGoals[]
+  shoppingLists ShoppingList[]
+}
+
+model Expense {
+ id          Int      @id @default(autoincrement())
+  libelle     String
+  montant     Float
+  date        DateTime
+  type        String
+  recurrence  String
+  user        User     @relation(fields: [userId], references: [id])
+  userId      Int
+}
+
+model Income {
+  id Int @id @default(autoincrement())
+  libelle String
+  montant Float
+  date DateTime
+  type String
+  recurrence String
+  user User @relation(fields: [userId], references:[id])
+  userId Int
+}
+
+model SavingGoals {
+  id Int @id @default(autoincrement())
+  libelle String
+  type String
+  montant Float
+  date_cible DateTime
+  user User @relation(fields:[userId],references:[id])
+  userId Int
+}
+
+model ShoppingList{
+  id Int @id @default(autoincrement())
+  libelle String
+  date DateTime
+  user User @relation(fields:[userId],references:[id])
+  userId Int
+  items ShoppingListsItems[]
+}
+
+model ShoppingListsItems {
+  id Int @id @default(autoincrement())
+  libelle String
+  montant Float
+  quantite Int
+  cocher Int @default(0)
+  shoppingLists ShoppingList @relation(fields:[shoppingListsID],references:[id])
+  shoppingListsID Int
+}
