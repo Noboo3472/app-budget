@@ -3,10 +3,14 @@ import prisma from '@/lib/prisma'
 
 export async function DELETE(request, { params }) {
   const { id } = await params
-  
-  const shoppingList = await prisma.shoppingList.delete({
+
+  await prisma.shoppingListsItems.deleteMany({
+    where: { shoppingListsID: parseInt(id) }
+  })
+
+  const list = await prisma.shoppingList.delete({
     where: { id: parseInt(id) }
   })
-  
-  return NextResponse.json(shoppingList)
+
+  return NextResponse.json(list)
 }
