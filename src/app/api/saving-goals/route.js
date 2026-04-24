@@ -13,7 +13,7 @@ export async function POST(request) {
     data: {
       libelle: body.libelle,
       montant: body.montant,
-      date_cible: new Date(body.date),
+      date_cible: new Date(body.date_cible),
       type: body.type,
       userId: body.userId
     }
