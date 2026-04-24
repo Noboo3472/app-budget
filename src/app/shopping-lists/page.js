@@ -57,12 +57,12 @@ export default function ShoppingListsPage() {
       <ul>
         {lists.map((list) => (
           <li key={list.id}>
-            <span 
-  onClick={() => router.push(`/shopping-lists/${list.id}`)}
-  style={{ cursor: "pointer", textDecoration: "underline" }}
->
-  {list.libelle} — {new Date(list.date).toLocaleDateString("fr-FR")}
-</span>
+            <span
+              onClick={() => router.push(`/shopping-lists/${list.id}`)}
+              style={{ cursor: "pointer", textDecoration: "underline" }}
+            >
+              {list.libelle} — {new Date(list.date).toLocaleDateString("fr-FR")}
+            </span>
             <button onClick={() => handleDelete(list.id)}>Supprimer</button>
           </li>
         ))}
