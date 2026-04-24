@@ -10,3 +10,14 @@ export async function DELETE(request, { params }) {
   
   return NextResponse.json(shoppingListItems)
 }
+export async function PATCH(request, { params }) {
+  const { id } = await params
+  const body = await request.json()
+
+  const item = await prisma.shoppingListsItems.update({
+    where: { id: parseInt(id) },
+    data: { cocher: body.cocher }
+  })
+
+  return NextResponse.json(item)
+}

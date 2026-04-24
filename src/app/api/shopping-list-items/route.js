@@ -3,7 +3,7 @@ import prisma from '@/lib/prisma'
 
 export async function GET() {
   const shoppingListItems = await prisma.shoppingListsItems.findMany()
-  return NextResponse.json(shoppingListItemss)
+  return NextResponse.json(shoppingListItems)
 }
 
 export async function POST(request) {
