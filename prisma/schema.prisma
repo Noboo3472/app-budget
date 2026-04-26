@@ -68,7 +68,7 @@ model ShoppingListsItems {
   id Int @id @default(autoincrement())
   libelle String
   montant Float
-  quantite Int
+  quantite Float
   cocher Int @default(0)
   shoppingLists ShoppingList @relation(fields:[shoppingListsID],references:[id])
   shoppingListsID Int

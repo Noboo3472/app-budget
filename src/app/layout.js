@@ -24,13 +24,25 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <nav>
-          <Link href="/">Accueil</Link>
-          <Link href="/budget">Budget</Link>
-          <Link href="/expenses">Dépenses</Link>
-          <Link href="/incomes">Revenus</Link>
-          <Link href="/shopping-lists">Courses</Link>
-          <Link href="/saving-goals">Épargne</Link>
+        <nav className="bg-gray-900 text-white px-6 py-4 flex gap-6">
+          <Link href="/" className="font-bold text-lg">
+            💰 Budget App
+          </Link>
+          <Link href="/budget" className="hover:text-green-400">
+            Budget
+          </Link>
+          <Link href="/expenses" className="hover:text-green-400">
+            Dépenses
+          </Link>
+          <Link href="/incomes" className="hover:text-green-400">
+            Revenus
+          </Link>
+          <Link href="/shopping-lists" className="hover:text-green-400">
+            Courses
+          </Link>
+          <Link href="/saving-goals" className="hover:text-green-400">
+            Épargne
+          </Link>
         </nav>
         <main>{children}</main>
       </body>
